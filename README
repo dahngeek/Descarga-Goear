@@ -1,3 +1,9 @@
-<h1>Leeme</h1>
 This work is licensed under a Creative Commons Attribution 3.0 Unported License.
 Asi que se debe dar Atribucion en el uso.
+
+		@---------------------------------@
+		|         Ejemplo de Uso		  |
+		@---------------------------------@
+		
+Se ingresa la url Ejemplo:  - http://www.goear.com/listen/646895c/im-yours-jason-mraz
+Y genera un reproductor que reproduce la canción y un enlace a la descarga.
