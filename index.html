@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<head>
+<Title>Música | Descargar Goear</title>
+<LINK href="style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="audio-player.js"></script>  
+        <script type="text/javascript">  
+            AudioPlayer.setup("player.swf", {  
+                width: 290  
+            });  
+        </script>  
+</head>
+<body>
+<div id="container">
+<a href="http://dahngeek.com/d/Musica/"><h1>Descarga Música de GoEar</h1></a>
+<p>Solo pon el link de la canción de goear aqui y presiona "Comprobar"</p>
+<p><em>Ejemplo: http://www.goear.com/listen/646895c/im-yours-jason-mraz</em></p></br>
+<form method="GET">
+<input type="text" id="in" name="url"/>
+<input type="submit" id="Enviar" value="Comprobar"/>
+</form>
+<?php
+/*
+Descargar desde Goear por medio de url
+www.dahngeek.com
+*/ if (isset($_GET['url'])) {
+$url = $_GET['url'];
+$id = explode("/", $url);
+$sng = 'http://goear.com/plimiter.php?f=' . $id[4];
+$load = 'http://www.goear.com/tracker758.php?f='.$id[4].'';
+        $xml = @simplexml_load_file($load);
+        if ($xml) {
+            $path = $xml->song['path'];
+            $artist = $xml->song['artist'];
+            $title = $xml->song['title'];
+            $name = $artist.' - '.$title.'';
+            }
+echo '<h2>Escuchando '. $title . ' de '. $artist .'</h2>';
+echo '<object type="application/x-shockwave-flash" data="player.swf" width="290" height="24" id="audioplayer2">
+<param name="movie" value="player.swf" />
+<param name="FlashVars" value="loop=yes&autostart=yes&soundFile='.$path.'&amp;playerID=2&amp;bg=0xCDDFF3&amp;leftbg=0x357DCE&amp;lefticon=0xF2F2F2&amp;rightbg=0xF06A51&amp;rightbghover=0xAF2910&amp;righticon=0xF2F2F2&amp;righticonhover=0xFFFFFF&amp;text=0x357DCE&amp;slider=0x357DCE&amp;track=0xFFFFFF&amp;border=0xFFFFFF&amp;loader=0xAF2910&amp;titles='.$title.'&amp;artists='.$artist.'&amp;" />
+<param name="quality" value="high" />
+<param name="menu" value="false" />
+<param name="bgcolor" value="#FFFFFF" />
+</object>';
+echo '<a href="http://goear.com/plimiter.php?f=' . $id[4] .'" class="down">Descargar Cancion</a>';
+}
+?>
+<a href="http://dahn.8it.be/goear" target="_blank"><img src="steps.png" alt="Instrucciones como Descargar" class="img"/></a>
+
+</div>
+<p class="att"><a href="http://dahngeek.com/">Desarrollador</a> | Este sitio no está relacionado con Goear.</p>
+<body>
